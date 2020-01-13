@@ -301,7 +301,7 @@ let convertir img =
       
 # 304 "leximages.ml"
 open Graphics
-let init_image n = 
+let init_image n= 
   let image_of () = 
     let img, x, y = 
       convertir n
