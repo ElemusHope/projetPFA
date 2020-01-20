@@ -7,7 +7,7 @@ let lire fichier =
 let explode s =
   let rec exp i l =
     if i < 0 then l 
-    else exp (i - 1) ((int_of_char(s.[i]))::l) in 
+    else exp (i - 1) ((int_of_char(s.[i])-48)::l) in 
 
   exp (String.length s-1) [];;
 
