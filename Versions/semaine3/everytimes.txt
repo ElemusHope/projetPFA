@@ -1,0 +1,3 @@
+ocamlc graphics.cma board.ml lire.ml grtest1.ml -o grtest1
+
+ocamlc graphics.cma testEvent.ml -o testEvent

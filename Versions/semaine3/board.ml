@@ -9,7 +9,7 @@ open Printf
   
     let get_as_string (b: t) pos =
       let i = get b pos in
-      if is_valid i then string_of_int i else "."
+      if is_valid i then string_of_int i else " "
   
     let with_val (b: t) (x, y) v =
       let b = Array.copy b in
