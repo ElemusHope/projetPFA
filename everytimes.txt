@@ -1,0 +1,8 @@
+//打开运行环境
+opam switch 4.07.1
+eval $(opam env)
+cd Versions/semaine3 
+
+//运行程序
+ocamlc graphics.cma board.ml lire.ml grtest1.ml -o grtest1
+./grtest1
