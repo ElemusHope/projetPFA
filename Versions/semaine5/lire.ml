@@ -37,11 +37,6 @@ let val_modifier ((x,y),v) l =
   match l with 
   h::t -> h::((x,y),v) t;;
 
-  let rec take n l =
-    if n = 0 then [] else
-      match l with 
-        h::t -> h:: take (n-1) t
-  ;;
   
   let rechercher [x;y;v] l = (*liste -> return int position*)
     let rec rechercher_aux [x;y;v] acc l = 
