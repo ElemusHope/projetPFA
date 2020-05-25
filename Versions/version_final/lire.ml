@@ -46,6 +46,11 @@ let rec split chunksize l=
     |[[]]->[[x;y;v]]
     |h::s -> [x;y;v]::(liste_val x y v s);; *)
   let l = ref [[0;0;0]];;
+
+  let changerList liste = 
+    l:=liste;
+    ;;
+
   let liste_val x y v = (*所有添加的参数存入liste*)
     l:= [x;y;v]::!l;
     !l;; 
@@ -75,3 +80,48 @@ let liste [x;y;v] l = (*重组liste 未更改部分 和 更改部分 结合 成�
   in liste_aux (take (rechercher [x;y;v] l) l) (liste_initial (liste_to_initial [x;y;v] l));;
 
   (*take (rechercher [1;2;3] [[1;2;4];[1;2;3];[4;2;3]] ) [[1;2;4];[1;2;3];[4;2;3]]*)
+
+  let rec longueur l =
+    match l with
+    | [] -> 0
+    | _::s -> 1 + (longueur s)
+    
+    let rec liste_fin l =
+      let rec liste_fin_aux long l = 
+      match l with 
+      |[[]]-> []
+      |[a;b;c]::s -> 
+      if long = 1 then [a;b;c]
+      else liste_fin_aux (long-1) s
+      in liste_fin_aux (longueur l) l;;
+    
+    let rec liste_take_fin l = 
+      take (rechercher (liste_fin l) l) l ;;
+    
+
+    let rec lstring l = 
+      match l with 
+      |[]-> []
+      | x::s -> (string_of_int x)::lstring s;;
+    
+    let lstring_string l = 
+      let buf = Buffer.create 100 in
+      List.iter (Buffer.add_string buf) (lstring (Array.to_list l));
+      Buffer.contents buf;;
+
+      let countzeros l =  
+        let rec countzero l acc = 
+        match l with 
+        |[]->acc
+        |x::s -> if x = 0 then countzero s (acc+1)
+                 else countzero s acc 
+        in countzero l 0;;
+
+    let liste_undo [x;y;v] l =   
+          take (rechercher [x;y;v] l ) l;;
+    
+    let rec rev_append l1 l2 = (*invertir liste*)
+      match l1 with 
+      |[]-> l2
+      |x::s -> rev_append s (x :: l2);;
+    let invertir_liste l = rev_append l [];;

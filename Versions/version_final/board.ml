@@ -71,3 +71,18 @@ open Printf
     match fill b (0,0) with
     | Some b -> b
     | None -> failwith "sudoku: no solution";;
+
+  let comparer_liste sudoku1 sudoku2 = 
+    let liste1 = Array.to_list sudoku1 in
+    let liste2 = Array.to_list sudoku2 in
+
+    let rec compareliste l1 l2  = 
+      match l1, l2 with 
+      | [],[] -> true
+      | x1::s1, x2::s2 -> if x1 = x2 then(compareliste s1 s2) else(false)
+    in
+    compareliste liste1 liste2;;
+
+
+
+

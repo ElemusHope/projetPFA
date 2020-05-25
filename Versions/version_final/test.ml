@@ -16,6 +16,11 @@ let init_sudoku nomfichier =
   init
 ;; 
 
-let sudoku_test = init_sudoku "grid0.txt";;
-let sudoku_test = Board.with_val sudoku_test (1,1) 1;;
-Board.print (sudoku_test);;
+let sudoku_test1 = init_sudoku "grid0.txt";;
+let sudoku_test2 = init_sudoku "grid0.txt";;
+(* Board.print (sudoku_test);; *)
+
+if(Board.comparer_liste (!sudoku_current) sudoku_init) then() else()
+
+let sudoku_tmp = Board.with_val sudoku_test (1,1) 1;;
+print_int (Board.get sudoku_tmp (1,1));;
